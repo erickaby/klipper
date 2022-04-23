@@ -149,6 +149,7 @@ gpio_peripheral(uint32_t gpio, uint32_t mode, int pullup)
 
     if (gpio == GPIO('A', 13) || gpio == GPIO('A', 14))
         // Disable SWD to free PA13, PA14
+        enable_pclock(AFIO_BASE);
         stm32f1_alternative_remap(AFIO_MAPR_SWJ_CFG_Msk,
                                   AFIO_MAPR_SWJ_CFG_DISABLE);
 
